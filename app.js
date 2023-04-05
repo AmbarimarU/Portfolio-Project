@@ -3,13 +3,12 @@
 
  const API_KEY = "07d8ff7eef564c0ea6ce5ea3f2af151e";
  const HEADLINES = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
- const GENERAL = "https://newsapi.org/v2/top-news?country=us&category=general&apiKey=";
+ const GENERAL = "https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=";
  const BUSINESS = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=";
  const SPORTS = "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=";
  const ENTERTAINMENT = "https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=";
  const TECH = "https://newsapi.org/v2/top-headlines?country=us&category=&apiKey=";
  const SEARCH = "https://newsapi.org/v2/top-headlines?q=";
-
 
 // selecting needed html to add links 
 
@@ -26,8 +25,6 @@
  const searchNews = document.querySelector("#query");
 
 let newsArray = [];
-
-
 
 //event listeners 
 
@@ -132,7 +129,8 @@ const getEntert = async () => {
     newsArray = [];
     if (response){
         const myJson = await response.json();
-        newsArray = myJson.articles;       
+        newsArray = myJson.articles; 
+        console.logmewsArray      
     } else {
         console.log(response.status, response.statusText);
     }
@@ -155,8 +153,6 @@ const getSearch = async () => {
 
  displayNews();
 }
-
-
        
        function displayNews() {
 
@@ -173,7 +169,7 @@ const getSearch = async () => {
             const htagHeadlines = document.createElement("h3");
             htagHeadlines.innerHTML = element.title;
             const image = document.createElement("img");
-            image.setAttribute("src", "element.urlToImage");
+            image.setAttribute("src", `${element.urlToImage}`);
             image.setAttribute("alt", "image of the article");
             const dateHeadlines = document.createElement("h4");
             dateHeadlines.innerHTML = date[0];
